@@ -1,0 +1,44 @@
+1. I have the following tables:
+    - Food
+    - Meal
+    - Species
+    - Acceptable_Foods
+    - Keeper
+    - Animal
+    - Quantity
+
+    * Animal to Meal is strong one-to-many, total on the Animal side, and partial on the Meal side.
+    Animals can eat many meals, but only one animal can eat each meal.
+    An animal must exist in order to have a meal, however an animal doesn't need to eat a meal.
+
+    * Keeper to Meal is weak one-to-many, total on the keeper side, and partial on the Meal side.
+    One keeper may deliver many meals, but only one keeper delivers each meal.
+    A keeper must exist in order to deliver a meal, however, a keeper doesn't have
+    to deliver any meals.
+
+    * Species to Animal is weak one-to-many, total on the Species side, and partial on the Animal side.
+    There may be many animals of a specific species, but an animal can only be one species.
+    A species must exist for an animal to be of that type, however, there may not be an animal
+    of the specific species at the zoo.
+
+    * The table Acceptable_Foods is an associative table between Food and Species because the relationship
+    between Food and Species is many-to-many. Weak on the food side, and strong on the species side.
+    Total on the Food side, Species side, and Acceptable_Foods
+    side for the Species, and partial on the Acceptable_Foods side for the Food. 
+    A species can eat many foods, and a food may be eaten by many species.
+    A food and a species must exist in order to be added to the Acceptable_Foods table, and a species
+    must eat at least one food; however, some foods may not be eaten by any of the species.
+
+    * The table Quantity is an ssociative table between Food and Meal because the the relationship
+    between Food and Meal is many-to-many. Total on the Food side, Meal side, Quantity side for the Food,
+    and Quantity side for the Meal. Weak on the food side, and strong on the meal side.
+    A meal may consist of many foods, and many foods may be in many meals. A food and meal must exist in 
+    order to be added to the Quantity table, and every meal that exists consists of at least one food.
+
+2. Food: [food_name], calories_per_lb, lbs_of_food
+   Meal: [meal_id], meal_time, meal_date
+   Species: [species]
+   Animal: [animal_id], name, weight, height, daily_calorie_requirement
+   Keeper: [emp_num], emp_name (fname, lname)
+   Quantity: calories_per_food
+
